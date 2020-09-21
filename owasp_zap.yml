@@ -23,3 +23,16 @@
     - name: display pods
       debug:
         var: podman_pods 
+
+    - name: Pull owasp zap weekly image
+      shell: podman pull owasp/zap2docker-weekly:latest
+
+    - name: Get podman image info
+      shell: podman image ls --format=json
+      register: podman_images
+
+    - name: display pulled images
+      debug:
+        var: podman_images 
+
+    
