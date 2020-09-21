@@ -40,7 +40,7 @@
         push: no 
         state: build
 
-    - name: Run MSQL container
+    - name: Run dvws container
       podman_container:
         name: dvws
         image: dvws
