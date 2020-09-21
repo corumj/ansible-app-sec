@@ -10,5 +10,7 @@
     container_run_args: -p 8090:8090
     container_cmd_args: zap.sh -daemon -host 0.0.0.0 -port 8090 -config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true
   tasks:
-    import_role:
-      name: ikke_t.podman_container_systemd
+    - name: create zap container and ensure it is running
+      tags: container
+      import_role:
+        - name: ikke_t.podman_container_systemd
