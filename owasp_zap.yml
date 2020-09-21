@@ -4,6 +4,7 @@
   gather_facts: yes
   become: yes
   vars:
+    skip_podman_install: false
     container_state: running 
     container_name: owasp-zap
     container_image: owasp/zap2docker-weekly
