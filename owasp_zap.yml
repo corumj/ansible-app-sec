@@ -40,5 +40,15 @@
         push: no 
         state: build
 
-
-    
+    - name: Run MSQL container
+      podman_container:
+        name: dvws
+        image: dvws
+        state: started
+        env:
+          WAIT_HOSTS: mongo:27017, mysql:3306 
+          WAIT_HOSTS_TIMEOUT: 60
+          SQL_LOCAL_CONN_URL: mysql 
+          MONGO_LOCAL_CONN_URL: mongodb://mongo:27017/node-dvws
+      
+  
