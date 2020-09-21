@@ -13,4 +13,4 @@
     - name: create zap container and ensure it is running
       tags: container
       import_role:
-        - name: ikke_t.podman_container_systemd
+        name: podman_container_systemd
