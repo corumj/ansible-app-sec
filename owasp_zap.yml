@@ -37,8 +37,9 @@
       podman_image:
         name: dvws
         path: ~/dvws-node
-        push: no 
+        push: yes
         state: build
+        dest: quay.io/corumj
 
     - name: Run dvws container
       podman_container:
