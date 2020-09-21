@@ -2,43 +2,15 @@
 - name: Setup OWASP ZAP container
   hosts: all
   gather_facts: yes
-  become: yes
-  vars:
-    skip_podman_install: false
-    container_state: running 
-    container_name: owasp-zap
-    container_image: owasp/zap2docker-weekly
-    container_run_args: -p 8090:8090
-    container_cmd_args: zap.sh -daemon -host 0.0.0.0 -port 8090 -config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true
+  collections:
+    - containers.podman
   tasks:
-    - name: ensure podman is installed
-      package:
-        name: podman
+    - name: Run DVWS container
+      podman_container:
+        name: dvws
+        image: docker.io/cyrivs89/web-dvws
         state: present
-
-    - name: get podman info
-      shell: podman ps --format=json
-      register: podman_pods 
-
-    - name: display pods
-      debug:
-        var: podman_pods 
-
-    - name: Pull owasp zap weekly image
-      shell: podman pull owasp/zap2docker-weekly:latest
-
-    - name: Get podman image info
-      shell: podman image ls --format=json
-      register: podman_images
-
-    - name: display pulled images
-      debug:
-        var: podman_images.stdout
-
-    - name: Run OWASP Zap
-      shell: ls 
-
-    # - name: Deploy Damn Vulnerable Web Services (DVWS) app
-    #   shell: podman run -dt --name dvws -p 8080:80/tcp cyrivs89/web-dvws
+        recreate: yes
+        published_ports: 8080:80
 
     
