@@ -5,13 +5,24 @@
   collections:
     - containers.podman
   tasks:
-    - name: Run DVWS container
+    - name: Run mongo container
       podman_container:
-        name: dvws
-        image: docker.io/cyrivs89/web-dvws
+        name: mongo
+        image: mongo:4.0.4
         state: present
-        interactive: yes
-        recreate: yes
-        published_ports: 8080:80
+
+    - name: Run MSQL container
+      podman_container:
+        name: mysql
+        image: mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: mysecretpassword
+
+    - name: create dvws image
+      podman_image:
+        name: dvws
+        path: https://github.com/snoopysecurity/dvws-node.git
+        push: no 
+        
 
     
