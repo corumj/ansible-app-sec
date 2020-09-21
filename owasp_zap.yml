@@ -38,7 +38,7 @@
     - name: Run OWASP Zap
       shell: ls 
 
-    - name: Deploy Damn Vulnerable Web Services (DVWS) app
-      shell: podman run -dt -p 8080:80/tcp cyrivs89/web-dvws
+    # - name: Deploy Damn Vulnerable Web Services (DVWS) app
+    #   shell: podman run -dt --name dvws -p 8080:80/tcp cyrivs89/web-dvws
 
     
