@@ -9,13 +9,13 @@
       podman_container:
         name: mongo
         image: mongo:4.0.4
-        state: running
+        state: started
 
     - name: Run MSQL container
       podman_container:
         name: mysql
         image: mysql:5.7
-        state: running
+        state: started
         env:
           MYSQL_ROOT_PASSWORD: mysecretpassword
 
