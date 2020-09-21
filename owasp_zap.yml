@@ -17,7 +17,7 @@
         state: present
 
     - name: get podman info
-      shell: podman ps
+      shell: podman ps --format=json
       register: podman_pods 
 
     - name: display pods
