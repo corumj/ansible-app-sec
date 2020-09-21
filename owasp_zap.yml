@@ -39,7 +39,7 @@
         path: ~/dvws-node
         push: yes
         state: build
-        dest: quay.io/corumj
+        tag: quay.io/corumj/dvws
         username: corumj
         password: "{{ quay_password }}"
 
