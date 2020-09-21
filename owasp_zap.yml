@@ -19,10 +19,15 @@
         env:
           MYSQL_ROOT_PASSWORD: mysecretpassword
 
+    - name: Checkout DVWS repo
+      git:
+        repo: https://github.com/snoopysecurity/dvws-node.git
+        dest: ~/dvws-node
+        
     - name: create dvws image
       podman_image:
         name: dvws
-        path: https://github.com/snoopysecurity/dvws-node.git
+        path: ~/dvws-node
         push: no 
 
 
