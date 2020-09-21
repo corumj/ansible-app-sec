@@ -1,0 +1,11 @@
+---
+- name: Setup OWASP ZAP container
+  hosts: all
+  gather_facts: no
+  become: yes
+  vars:
+    container_state: running 
+    container_name: owasp-zap
+    container_image: owasp/zap2docker-weekly
+    container_run_args: -p 8090:8090
+    container_cmd_args: zap.sh -daemon -host 0.0.0.0 -port 8090 -config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true
