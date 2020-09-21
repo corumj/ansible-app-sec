@@ -1,7 +1,7 @@
 ---
 - name: Setup OWASP ZAP container
   hosts: all
-  gather_facts: no
+  gather_facts: yes
   become: yes
   vars:
     container_state: running 
