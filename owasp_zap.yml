@@ -40,6 +40,8 @@
         push: yes
         state: build
         dest: quay.io/corumj
+        user: corumj
+        password: "{{ quay_password }}"
 
     - name: Run dvws container
       podman_container:
