@@ -5,6 +5,14 @@
   collections:
     - containers.podman
   tasks:
+    - name: Install required tools
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - podman
+        - git 
+        
     - name: Run mongo container
       podman_container:
         name: mongo
