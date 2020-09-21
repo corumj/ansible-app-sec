@@ -10,6 +10,7 @@
         name: dvws
         image: docker.io/cyrivs89/web-dvws
         state: present
+        interactive: yes
         recreate: yes
         published_ports: 8080:80
 
