@@ -38,7 +38,7 @@
         name: dvws
         path: ~/dvws-node
         push: no 
-        build: yes
+        state: build
 
 
     
