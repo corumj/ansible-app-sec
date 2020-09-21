@@ -9,13 +9,14 @@
       podman_container:
         name: mongo
         image: mongo:4.0.4
-        state: present
+        state: running
 
     - name: Run MSQL container
       podman_container:
         name: mysql
         image: mysql:5.7
-        environment:
+        state: running
+        env:
           MYSQL_ROOT_PASSWORD: mysecretpassword
 
     - name: create dvws image
@@ -23,6 +24,6 @@
         name: dvws
         path: https://github.com/snoopysecurity/dvws-node.git
         push: no 
-        
+
 
     
